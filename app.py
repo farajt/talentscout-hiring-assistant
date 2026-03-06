@@ -21,22 +21,30 @@ st.markdown("""
 
 /* Reduce top spacing */
 .block-container {
-    padding-top: 1rem;
+    padding-top: 1.5rem;
+}
+
+/* Header container */
+.header-box {
+    background: linear-gradient(90deg,#f7f9fc,#eef3ff);
+    padding:25px;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom:20px;
+    border:1px solid #e5e7eb;
 }
 
 /* Title */
 .main-title {
-    font-size:34px;
+    font-size:38px;
     font-weight:700;
-    text-align:center;
-    margin-bottom:5px;
+    margin-bottom:8px;
 }
 
 /* Subtitle */
 .subtitle {
-    text-align:center;
-    color:#6c757d;
-    margin-bottom:20px;
+    font-size:16px;
+    color:#6b7280;
 }
 
 /* Chat bubbles */
@@ -48,11 +56,11 @@ st.markdown("""
 }
 
 .user-box {
-    background-color:#e6f3ff;
+    background-color:#e8f3ff;
 }
 
 .bot-box {
-    background-color:#f5f5f5;
+    background-color:#f3f4f6;
 }
 
 /* Summary card */
@@ -66,7 +74,7 @@ st.markdown("""
 
 /* Chat input */
 [data-testid="stChatInput"] {
-    border-top:1px solid #e6e6e6;
+    border-top:1px solid #e5e7eb;
     padding-top:10px;
 }
 
@@ -105,20 +113,17 @@ An AI-powered chatbot designed to automate the **initial technical screening pro
     st.write("👨‍💻 Developed for AI/ML Internship Assignment")
 
 # -------------------------
-# Title Section
+# Header Section
 # -------------------------
 
-st.markdown(
-    '<div class="main-title">🤖 TalentScout Hiring Assistant</div>',
-    unsafe_allow_html=True
-)
-
-st.markdown(
-    '<div class="subtitle">AI assistant that collects candidate details and generates technical interview questions.</div>',
-    unsafe_allow_html=True
-)
-
-st.divider()
+st.markdown("""
+<div class="header-box">
+    <div class="main-title">🤖 TalentScout Hiring Assistant</div>
+    <div class="subtitle">
+        AI assistant that collects candidate details and generates technical interview questions
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 # -------------------------
 # Session State
