@@ -1,47 +1,26 @@
-from chatbot.llm import get_llm
-from langchain_core.messages import HumanMessage
+import os
+import streamlit as st
+from langchain_groq import ChatGroq
 
 
-def generate_questions(tech_stack):
+def get_llm():
 
-    llm = get_llm()
+    # Load API key
+    api_key = None
 
-    questions_output = ""
+    if "GROQ_API_KEY" in st.secrets:
+        api_key = st.secrets["GROQ_API_KEY"]
+    else:
+        api_key = os.getenv("GROQ_API_KEY")
 
-    for tech in tech_stack:
+    if not api_key:
+        raise ValueError("GROQ_API_KEY not found")
 
-        prompt = f"""
-You are a technical interviewer.
+    llm = ChatGroq(
+        groq_api_key=api_key,
+        model="llama3-8b-8192",
+        temperature=0.2,
+        max_tokens=800
+    )
 
-Generate exactly 5 technical interview questions for the following technology.
-
-Technology: {tech}
-
-Rules:
-- Do NOT include introductions
-- Do NOT explain anything
-- Only return the questions
-- Format as a numbered list
-
-Example format:
-
-1. Question
-2. Question
-3. Question
-4. Question
-5. Question
-"""
-
-        try:
-            response = llm.invoke(
-                [HumanMessage(content=prompt)]
-            )
-
-            questions_output += f"\n\n### {tech}\n\n"
-            questions_output += response.content.strip()
-
-        except Exception:
-            questions_output += f"\n\n### {tech}\n\n"
-            questions_output += "Unable to generate questions for this technology at the moment."
-
-    return questions_output
+    return llm
