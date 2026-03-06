@@ -1,4 +1,5 @@
 from chatbot.llm import get_llm
+from langchain_core.messages import HumanMessage
 
 
 def generate_questions(tech_stack):
@@ -31,9 +32,16 @@ Example format:
 5. Question
 """
 
-        response = llm.invoke(prompt)
+        try:
+            response = llm.invoke(
+                [HumanMessage(content=prompt)]
+            )
 
-        questions_output += f"\n\n### {tech}\n\n"
-        questions_output += response.content.strip()
+            questions_output += f"\n\n### {tech}\n\n"
+            questions_output += response.content.strip()
+
+        except Exception:
+            questions_output += f"\n\n### {tech}\n\n"
+            questions_output += "Unable to generate questions for this technology at the moment."
 
     return questions_output
