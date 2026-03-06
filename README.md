@@ -2,6 +2,7 @@
 
 An AI-powered chatbot that performs an initial technical screening of candidates by collecting their information and generating interview questions based on their declared technology stack.
 
+Live App: https://talentscout-hiring-assistant-dowbugrzvrunjayvltc3do.streamlit.app/
 Repository: https://github.com/farajt/talentscout-hiring-assistant
 
 ---
