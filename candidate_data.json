@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Jam Wick",
+        "email": "jam@gmail.com",
+        "phone": "8976787678",
+        "experience": "2",
+        "position": "AI intern",
+        "location": "Pune",
+        "tech_stack": [
+            "Python",
+            "Django"
+        ]
+    },
+    {
+        "name": "Faraj Tamboli",
+        "email": "faraj@gmail.com",
+        "phone": "9878678789",
+        "experience": "1",
+        "position": "Python Developer",
+        "location": "Pune",
+        "tech_stack": [
+            "Python"
+        ]
+    }
+]
